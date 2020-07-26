@@ -3,8 +3,8 @@
     "ColumnHeaders": [
 
         "ID",
-        "Name",
         "Role",
+        "Name",
         "Nickname"
     ],
     "Data": [{
@@ -30,6 +30,6 @@
             "Name": "Sally Sue",
             "Role": "Artist",
             "Nickname": "Sue5555",
-        },
+        }
     ]
 }

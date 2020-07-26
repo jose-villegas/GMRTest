@@ -35,7 +35,7 @@ public class TableDataEntryDisplayInstancer : TableDataTriggerBase
             {
                 var toDestroy = _entries.GetRange(_entries.Count - difference - 1, difference);
 
-                toDestroy.ForEach(x => Destroy(x.gameObject));
+                toDestroy.ForEach(x => Destroy(x.transform.parent.gameObject));
                 _entries.RemoveRange(_entries.Count - difference - 1, difference);
             }
             // we need more entries

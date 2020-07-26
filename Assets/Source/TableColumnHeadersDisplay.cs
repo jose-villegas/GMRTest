@@ -40,7 +40,7 @@ public class TableColumnHeadersDisplay : TableDataTriggerBase
             {
                 var toDestroy = _columnLabels.GetRange(_columnLabels.Count - difference - 1, difference);
 
-                toDestroy.ForEach(x => Destroy(x.gameObject));
+                toDestroy.ForEach(x => Destroy(x.transform.parent.gameObject));
                 _columnLabels.RemoveRange(_columnLabels.Count - difference - 1, difference);
             }
             // we need more labels
