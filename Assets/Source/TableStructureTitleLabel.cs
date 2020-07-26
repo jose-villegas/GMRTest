@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 
-public class TableStructureTitleLabel : MonoBehaviour
+[RequireComponent(typeof(TextMeshProUGUI))]
+public class TableStructureTitleLabel : TableDataTriggerBase
 {
-    // Start is called before the first frame update
-    void Start()
+    private TextMeshProUGUI _label;
+
+    void Awake()
     {
-        
+        // load component
+        _label = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void LoaderOnOnTableLoadFailure()
     {
-        
+        _label.text = "Failed to load file content!";
+    }
+
+    protected override void OnTableDataChanged(TableStructure tableStructure)
+    {
+        _label.text = tableStructure.Title;
     }
 }
