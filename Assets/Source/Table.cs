@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class TableStructure
+public class Table
 {
     private string _title;
     private List<string> _headers;

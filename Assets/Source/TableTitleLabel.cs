@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class TableStructureTitleLabel : TableDataTriggerBase
+public class TableTitleLabel : TableDataTriggerBase
 {
     private TextMeshProUGUI _label;
 
@@ -15,10 +15,12 @@ public class TableStructureTitleLabel : TableDataTriggerBase
     protected override void LoaderOnOnTableLoadFailure()
     {
         _label.text = "Failed to load file content!";
+        _label.fontStyle = FontStyles.Normal;
     }
 
-    protected override void OnTableDataChanged(TableStructure tableStructure)
+    protected override void OnTableDataChanged(Table table)
     {
-        _label.text = tableStructure.Title;
+        _label.text = table.Title;
+        _label.fontStyle = FontStyles.Bold;
     }
 }

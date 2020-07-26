@@ -2,7 +2,7 @@
 
 public abstract class TableDataTriggerBase : MonoBehaviour
 {
-    [SerializeField] private TableStructureLoader _loader;
+    [SerializeField] private TableDataLoader _loader;
 
     private void OnEnable()
     {
@@ -17,5 +17,5 @@ public abstract class TableDataTriggerBase : MonoBehaviour
     }
 
     protected abstract void LoaderOnOnTableLoadFailure();
-    protected abstract void OnTableDataChanged(TableStructure tableStructure);
+    protected abstract void OnTableDataChanged(Table table);
 }

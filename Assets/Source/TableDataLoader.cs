@@ -3,25 +3,28 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class TableStructureLoader : MonoBehaviour
+public class TableDataLoader : MonoBehaviour
 {
     public const string FileName = "JsonChallenge.json";
 
-    private TableStructure _tableData;
+    private Table _tableData;
     private FileWatcher _watcher;
 
-    public event Action<TableStructure> OnTableDataChanged;
+    public event Action<Table> OnTableDataChanged;
     public event Action OnTableLoadFailure;
 
-    private TableStructure LoadedData
+    private Table LoadedData
     {
         get => _tableData;
         set
         {
             _tableData = value;
 
-            // notify observers
-            OnTableDataChanged?.Invoke(_tableData);
+            Dispatcher.RunOnMainThread(() =>
+            {
+                // notify observers
+                OnTableDataChanged?.Invoke(_tableData);
+            });
         }
     }
 
@@ -51,7 +54,8 @@ public class TableStructureLoader : MonoBehaviour
             var content = System.IO.File.ReadAllText(path);
 
             // try to deserialize
-            LoadedData = JsonConvert.DeserializeObject<TableStructure>(content);
+            LoadedData = JsonConvert.DeserializeObject<Table>(content);
+            Debug.LogWarning("Table data changed, loading new data...");
         }
         catch (Exception e)
         {
