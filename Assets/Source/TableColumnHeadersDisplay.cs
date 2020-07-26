@@ -48,8 +48,14 @@ public class TableColumnHeadersDisplay : TableDataTriggerBase
             {
                 for (int i = 0; i < Math.Abs(difference); i++)
                 {
+                    var parent = new GameObject();
+                    parent.AddComponent<RectTransform>();
+                    parent.transform.SetParent(transform);
+
+                    // create another gameObject inside to break TextMeshProUGUI labels
+                    // breaking layout group sizing rules
                     var go = new GameObject();
-                    go.transform.SetParent(transform);
+                    go.transform.SetParent(parent.transform);
 
                     // create text label
                     var label = go.AddComponent<TextMeshProUGUI>();
@@ -62,7 +68,7 @@ public class TableColumnHeadersDisplay : TableDataTriggerBase
         SetColumnValues(table);
     }
 
-    protected  virtual void SetColumnValues(Table table)
+    protected virtual void SetColumnValues(Table table)
     {
         // set column header values
         for (int i = 0; i < table.ColumnHeaders.Count && i < _columnLabels.Count; i++)
