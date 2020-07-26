@@ -53,7 +53,6 @@ public class TableColumnHeadersDisplay : TableDataTriggerBase
 
                     // create text label
                     var label = go.AddComponent<TextMeshProUGUI>();
-                    
 
                     _columnLabels.Add(label);
                 }
